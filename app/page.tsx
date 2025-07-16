@@ -369,33 +369,38 @@ const Colon = () => (
           <div className="absolute inset-0 bg-gradient-to-r from-[#00b0ff]/20 via-[#00ffff]/30 to-[#00b0ff]/20 rounded-3xl blur-2xl transform scale-110"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00b0ff]/10 to-transparent rounded-3xl blur-xl"></div>
           
-          <div className="relative flex items-center justify-center space-x-8 p-8">
-            {(['days', 'hours', 'minutes', 'seconds'] as const).map((k, i) => (
-              <React.Fragment key={k}>
-                <div className="text-center">
-                  <div className="relative">
-                    {/* Outer glow */}
-                    <div className="absolute inset-0 bg-[#00b0ff]/30 rounded-8xl blur-sm transform scale-90"></div>
-                  
-                    <div className="relative rounded-2xl border-2 border-[#00b0ff]/50 bg-white/95 p-6 shadow-2xl backdrop-blur-sm">
-                      {/* Notebook lines effect */}
-                      <div className="absolute inset-0 opacity-10 pointer-events-none">
-                        <div className="h-full w-full bg-gradient-to-b from-transparent via-blue-200 to-transparent bg-[length:100%_20px] bg-repeat-y"></div>
-                      </div>
-                
-                      <span className="relative text-8xl font-light text-black drop-shadow-sm font-['Orbitron']">
-                        {String(timeLeft[k]).padStart(2, '0')}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="mt-4 block text-lg font-light text-blue-300 capitalize">
-                    {k}
-                  </span>
-                </div>
-                    {i < 3 && <Colon />}
-              </React.Fragment>
-            ))}
+          <div className="relative flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-6 p-4 sm:p-8">
+  {(['days', 'hours', 'minutes', 'seconds'] as const).map((k, i) => (
+    <React.Fragment key={k}>
+      <div className="text-center">
+        <div className="relative">
+          {/* Outer glow */}
+          <div className="absolute inset-0 bg-[#00b0ff]/30 rounded-2xl blur-sm transform scale-90"></div>
+
+          <div className="relative rounded-2xl border-2 border-[#00b0ff]/50 bg-white/95 p-4 sm:p-6 shadow-2xl backdrop-blur-sm w-20 sm:w-auto">
+            {/* Notebook lines effect */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <div className="h-full w-full bg-gradient-to-b from-transparent via-blue-200 to-transparent bg-[length:100%_20px] bg-repeat-y"></div>
+            </div>
+
+            <span className="relative text-5xl sm:text-8xl font-light text-black drop-shadow-sm font-['Orbitron']">
+              {String(timeLeft[k]).padStart(2, '0')}
+            </span>
           </div>
+        </div>
+        <span className="mt-3 block text-base sm:text-lg font-light text-blue-300 capitalize">
+          {k}
+        </span>
+      </div>
+      {i < 3 && (
+        <div className="hidden sm:flex">
+          <Colon />
+        </div>
+      )}
+    </React.Fragment>
+  ))}
+</div>
+
         </div>
 
         {/* EMAIL SIGNUP */}
@@ -427,13 +432,19 @@ const Colon = () => (
             </div>
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-[#00b0ff] to-[#0066ff] rounded-full blur-md opacity-50"></div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="relative whitespace-nowrap rounded-full bg-gradient-to-r from-[#00b0ff] to-[#0066ff] px-8 py-4 font-semibold text-black shadow-lg shadow-[#00b0ff]/30 transition-all duration-300 hover:scale-105 hover:from-[#339dff] hover:to-[#0051cc] hover:shadow-[#00b0ff]/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-              >
-                {isLoading ? 'Subscribing...' : isSubscribed ? 'Subscribed!' : 'Notify Me'}
-              </button>
+             <div className="w-full flex justify-center sm:justify-start">
+  <div className="relative">
+    <div className="absolute inset-0 bg-gradient-to-r from-[#00b0ff] to-[#0066ff] rounded-full blur-md opacity-50"></div>
+    <button
+      type="submit"
+      disabled={isLoading}
+      className="relative w-full sm:w-auto whitespace-nowrap rounded-full bg-gradient-to-r from-[#00b0ff] to-[#0066ff] px-6 py-3 sm:px-8 sm:py-4 font-semibold text-black shadow-lg shadow-[#00b0ff]/30 transition-all duration-300 hover:scale-105 hover:from-[#339dff] hover:to-[#0051cc] hover:shadow-[#00b0ff]/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+    >
+      {isLoading ? 'Subscribing...' : isSubscribed ? 'Subscribed!' : 'Notify Me'}
+    </button>
+  </div>
+</div>
+
             </div>
           </form>
 
