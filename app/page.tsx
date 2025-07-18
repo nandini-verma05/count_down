@@ -7,7 +7,7 @@ import './globals.css';
 const FloatingSocialIcons = dynamic(() => import('../components/Floating'), { ssr: false });
 
 const getTimeLeft = () => {
-  const target = new Date('2025-07-21T00:00:00+05:30').getTime();
+  const target = new Date('2025-07-25T00:00:00+05:30').getTime();
   const diff = Math.max(target - Date.now(), 0);
   const SEC = 1000, MIN = 60 * SEC, HOUR = 60 * MIN, DAY = 24 * HOUR;
   return {

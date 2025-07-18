@@ -64,7 +64,7 @@ export async function GET(request: Request) {
 
 Thank you for joining our waitlist! We're excited to have you on board.
 
-We'll notify you as soon as we launch on July 21, 2025.
+We'll notify you as soon as we launch on July 25, 2025.
 
 Get ready for something amazing!
 
