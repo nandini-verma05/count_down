@@ -364,44 +364,48 @@ const Colon = () => (
         </div>
 
         {/* COUNTDOWN with Neon Glow */}
-        <div className="relative mb-16">
-          {/* Neon glow background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#00b0ff]/20 via-[#00ffff]/30 to-[#00b0ff]/20 rounded-3xl blur-2xl transform scale-110"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00b0ff]/10 to-transparent rounded-3xl blur-xl"></div>
-          
-          <div className="relative flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-6 p-4 sm:p-8">
-  {(['days', 'hours', 'minutes', 'seconds'] as const).map((k, i) => (
-    <React.Fragment key={k}>
-      <div className="text-center">
-        <div className="relative">
-          {/* Outer glow */}
-          <div className="absolute inset-0 bg-[#00b0ff]/30 rounded-2xl blur-sm transform scale-90"></div>
+   <div className="relative mb-16 max-w-md mx-auto sm:max-w-none">
+  {/* Neon glow background */}
+  <div className="absolute inset-0 bg-gradient-to-r from-[#00b0ff]/20 via-[#00ffff]/30 to-[#00b0ff]/20 rounded-3xl blur-2xl scale-110 z-0"></div>
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00b0ff]/10 to-transparent rounded-3xl blur-xl z-0"></div>
+  <div className="relative z-10 border-2 border-[#00b0ff] rounded-3xl p-4 sm:p-8 bg-black/20 backdrop-blur-md">
 
-          <div className="relative rounded-2xl border-2 border-[#00b0ff]/50 bg-white/95 p-4 sm:p-6 shadow-2xl backdrop-blur-sm w-20 sm:w-auto">
-            {/* Notebook lines effect */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none">
-              <div className="h-full w-full bg-gradient-to-b from-transparent via-blue-200 to-transparent bg-[length:100%_20px] bg-repeat-y"></div>
+    <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:flex sm:flex-row sm:items-center sm:justify-center sm:space-x-6 sm:space-y-0">
+      {(['days', 'hours', 'minutes', 'seconds'] as const).map((k, i) => (
+        <React.Fragment key={k}>
+          <div className="text-center">
+            <div className="relative">
+              {/* Outer glow */}
+              <div className="absolute inset-0 bg-[#00b0ff]/30 rounded-2xl blur-sm scale-90"></div>
+
+              <div className="relative rounded-2xl border-2 border-[#00b0ff]/50 bg-white/95 p-4 shadow-2xl backdrop-blur-sm w-24 h-24 sm:w-auto sm:h-auto sm:p-6 flex items-center justify-center">
+                {/* Notebook lines effect */}
+                <div className="absolute inset-0 opacity-10 pointer-events-none">
+                  <div className="h-full w-full bg-gradient-to-b from-transparent via-blue-200 to-transparent bg-[length:100%_20px] bg-repeat-y"></div>
+                </div>
+
+                <span className="relative text-4xl sm:text-8xl font-light text-black drop-shadow-sm font-['Orbitron']">
+                  {String(timeLeft[k]).padStart(2, '0')}
+                </span>
+              </div>
             </div>
-
-            <span className="relative text-5xl sm:text-8xl font-light text-black drop-shadow-sm font-['Orbitron']">
-              {String(timeLeft[k]).padStart(2, '0')}
+            <span className="mt-2 block text-sm sm:text-lg font-light text-blue-300 capitalize">
+              {k}
             </span>
           </div>
-        </div>
-        <span className="mt-3 block text-base sm:text-lg font-light text-blue-300 capitalize">
-          {k}
-        </span>
-      </div>
-      {i < 3 && (
-        <div className="hidden sm:flex">
-          <Colon />
-        </div>
-      )}
-    </React.Fragment>
-  ))}
+
+          {/* Show Colon only on desktop */}
+          {i < 3 && (
+            <div className="hidden sm:flex">
+              <Colon />
+            </div>
+          )}
+        </React.Fragment>
+      ))}
+    </div>
+  </div>
 </div>
 
-        </div>
 
         {/* EMAIL SIGNUP */}
         <section className="space-y-8 w-full max-w-xl">
